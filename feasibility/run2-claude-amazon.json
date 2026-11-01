@@ -1,0 +1,119 @@
+{
+  "page_type": "product_page",
+  "primary_goal": "Get the visitor to add the Apple AirPods Pro 3 (new) to the basket or buy now from the Amazon-fulfilled buy box",
+  "overall_score": 62,
+  "friction_points": [
+    {
+      "area": "CTA",
+      "issue": "The primary purchase CTA (Add to Basket / Buy Now) is not visible. The upper part of the buy box is covered by a large blank white area, so the main conversion action cannot be seen.",
+      "evidence": "A large white rectangle covers the top-right of the page, from the header across the buy-box column. Below it, only fragments are visible: '€191', 'FREE delivery Tuesday, 3 November', 'Dispatches from Amazon / Sold by: Amazon Retourenkauf' and an 'Add to List' dropdown. No basket or buy button is visible.",
+      "severity": "high",
+      "principle": "clarity / visual hierarchy"
+    },
+    {
+      "area": "pricing",
+      "issue": "Two different prices compete for attention, and the buy box appears to default to a used or returned offer instead of the new product shown in the main price block.",
+      "evidence": "The centre column shows '-17% €206' with 'RRP: €249.00'. The buy box shows '€191' under a cut-off label ending in '...Very Good' and 'Sold by: Amazon Retourenkauf'. Below it: 'New & Used (9) from €191'.",
+      "severity": "high",
+      "principle": "clarity / price consistency / trust"
+    },
+    {
+      "area": "pricing",
+      "issue": "The page sends buyers away from the default offer by advertising cheaper alternatives right next to the main price.",
+      "evidence": "Under the price block: 'May be available at a lower price from other sellers, potentially without Prime shipping.' The right column also has an 'Other sellers on Amazon' module.",
+      "severity": "medium",
+      "principle": "focus / choice overload"
+    },
+    {
+      "area": "copy",
+      "issue": "The interface language is inconsistent. The UI and bullets are in English, while the brand A+ content and the comparison chart are entirely in German.",
+      "evidence": "The header shows the 'EN' language selector and English labels ('About this item', 'Customers usually keep this item'). The A+ section reads 'Die weltbeste Aktive Geräuschunterdrückung bei In-Ear Kopfhörern.' and 'Welche AirPods sind die richtigen für dich?'",
+      "severity": "medium",
+      "principle": "language consistency / cognitive load"
+    },
+    {
+      "area": "layout",
+      "issue": "The centre column is very narrow, so the title and bullets become long, dense text walls that are hard to scan. The ALL-CAPS bullet lead-ins add to this.",
+      "evidence": "The product title wraps over about 10 lines. The 'About this item' bullets begin with 'THE WORLD'S BEST ACTIVE NOISE CANCELLATION IN-EAR HEADPHONES', 'BETTER FIT IN THE EAR', 'PERSONALISED LISTENING EXPERIENCE' and run as long, narrow paragraphs.",
+      "severity": "medium",
+      "principle": "scannability / cognitive load"
+    },
+    {
+      "area": "layout",
+      "issue": "The comparison chart is long and sparse. Many cells are empty, and the icons and text are tiny, so it adds scroll length without making the choice easier.",
+      "evidence": "The 'Welche AirPods sind die richtigen für dich?' table has four columns (AirPods 4, AirPods 4 mit ANC, AirPods Pro 3, AirPods Max) with many cells containing only '–' and very small icon labels, spanning a large vertical area.",
+      "severity": "low",
+      "principle": "cognitive load / relevance"
+    },
+    {
+      "area": "trust",
+      "issue": "Payment options common in Germany are not shown near the price. Only an instalment plan is visible.",
+      "evidence": "The price area shows 'Or €34.50 per month (6 months) with 0% APR Select plan'. No PayPal, Klarna or invoice (Rechnung) badges are visible anywhere on the page.",
+      "severity": "low",
+      "principle": "trust / German market expectations"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis": "If we keep the Add to Basket / Buy Now buttons fully visible and unobstructed in the first viewport, then add-to-cart rate will improve because the primary action will be immediately findable.",
+      "change": "Remove or fix the white overlay or flyout covering the buy box, and pin the buy box CTA above the fold on desktop",
+      "primary_metric": "add-to-cart rate",
+      "impact": 9,
+      "confidence": 6,
+      "ease": 7,
+      "ice_score": "7.3"
+    },
+    {
+      "hypothesis": "If the buy box defaults to the new, Amazon-sold offer at €206 and shows used or returned offers only as a secondary option, then conversion on the new SKU will improve because price and condition will match the main price block.",
+      "change": "Set the default buy-box offer to 'New – sold by Amazon' and move the 'Used – Very Good €191' offer to a secondary 'More buying choices' link",
+      "primary_metric": "add-to-cart rate (new condition)",
+      "impact": 7,
+      "confidence": 6,
+      "ease": 6,
+      "ice_score": "6.3"
+    },
+    {
+      "hypothesis": "If we remove the 'May be available at a lower price from other sellers' line next to the price, then add-to-cart rate will improve because fewer visitors will leave to compare offers.",
+      "change": "Remove or visually de-emphasise the 'lower price from other sellers' notice in the price block",
+      "primary_metric": "add-to-cart rate",
+      "impact": 5,
+      "confidence": 5,
+      "ease": 8,
+      "ice_score": "6.0"
+    },
+    {
+      "hypothesis": "If we rewrite the bullets as short, sentence-case benefit statements with a bold 2–3 word lead-in, then engagement and add-to-cart rate will improve because key benefits (ANC, 8h battery, heart rate, IP57) will be scannable in seconds.",
+      "change": "Replace the ALL-CAPS long bullets with 5 concise bullets of about 15 words each and widen the centre column",
+      "primary_metric": "add-to-cart rate",
+      "impact": 5,
+      "confidence": 5,
+      "ease": 8,
+      "ice_score": "6.0"
+    },
+    {
+      "hypothesis": "If the A+ content language matches the selected interface language, then add-to-cart rate will improve for English-UI visitors because they will understand the brand content without switching languages.",
+      "change": "Serve an English A+ module when 'EN' is selected (and German bullets when 'DE' is selected)",
+      "primary_metric": "add-to-cart rate for EN-UI sessions",
+      "impact": 5,
+      "confidence": 6,
+      "ease": 6,
+      "ice_score": "5.7"
+    }
+  ],
+  "quick_wins": [
+    "Convert the ALL-CAPS bullet lead-ins in 'About this item' to sentence case",
+    "Remove empty '–' rows in the comparison chart, or replace them with a clear 'not available' marker",
+    "Shorten the product title to the core product name and key features (e.g. 'Apple AirPods Pro 3 – ANC, Heart Rate, USB-C')",
+    "Make the condition label ('New' / 'Used – Very Good') prominent next to every buy-box price",
+    "Increase the font size of icon labels in the comparison chart so they are legible"
+  ],
+  "uncertainties": [
+    "Whether the white block over the buy box is a real rendering bug or an artifact of the full-page screenshot (e.g. an open flyout)",
+    "Whether Add to Basket and Buy Now buttons exist beneath the covered area",
+    "Which payment methods are offered at checkout (PayPal, Klarna, invoice); these are not visible on this page",
+    "Whether the Impressum and legal links are present in the footer, which is not shown in the screenshot",
+    "Mobile layout and behaviour, since only a desktop view is visible",
+    "Exact cents of the prices and the review count, which are too small to read reliably",
+    "Actual traffic mix (EN vs DE UI users), which determines how much the language mismatch matters"
+  ]
+}

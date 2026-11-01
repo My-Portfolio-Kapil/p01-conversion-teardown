@@ -1,0 +1,93 @@
+{
+  "page_type": "editorial_paywall",
+  "primary_goal": "Convert non-subscribed readers hitting the paywall into paid SPIEGEL+ subscribers ('Jetzt SPIEGEL+ testen') or facilitate sign-in for existing subscribers",
+  "overall_score": 62,
+  "friction_points": [
+    {
+      "area": "value proposition / content gate",
+      "issue": "Premature hard paywall cutoff leaves readers with too little context or emotional investment in the argument before demanding a subscription.",
+      "evidence": "After the headline, teaser sentence, and lead photo, the article abruptly terminates into the SPIEGEL+ subscription box without a gradual text fade or a preview of the author's core thesis.",
+      "severity": "high",
+      "principle": "value-first engagement / curiosity gap"
+    },
+    {
+      "area": "pricing transparency / decision anxiety",
+      "issue": "The subscription module omits the upfront trial cost and subsequent monthly price, creating click hesitation and friction at the decision moment.",
+      "evidence": "The primary CTA button states 'Jetzt SPIEGEL+ testen' alongside 'Monatlich kündbar', but displays neither the introductory trial price (e.g., €1 for the first month) nor the renewal rate above the fold.",
+      "severity": "high",
+      "principle": "price transparency / risk reduction"
+    },
+    {
+      "area": "visual clutter / distraction",
+      "issue": "Intrusive programmatic banner ads and native recommendation widgets appear immediately adjacent to the paywall, pulling attention away from the primary conversion goal.",
+      "evidence": "Two large laboratory furniture display ads ('Labormöbel...') sit directly beneath the subscription card, followed by sponsored automotive content blocks further down the viewport.",
+      "severity": "medium",
+      "principle": "attention ratio / visual hierarchy"
+    },
+    {
+      "area": "returning user friction",
+      "issue": "The sign-in link for existing subscribers is visually subordinated, creating friction for paying users landing via external platforms (social media, aggregators, or newsletters).",
+      "evidence": "The account access prompt ('Sie haben bereits ein Konto? Hier anmelden') is styled in small, muted text beneath the primary button with minimal visual affordance.",
+      "severity": "medium",
+      "principle": "friction reduction / user retention"
+    },
+    {
+      "area": "social proof / perceived value",
+      "issue": "The subscription box relies strictly on functional utility bullets rather than reinforcing journalistic credibility or subscriber social proof.",
+      "evidence": "Bullets list generic platform features ('Frei lesen', 'Audio-Artikel anhören') without subscriber counts, journalistic awards, or qualitative credibility markers.",
+      "severity": "low",
+      "principle": "social proof / brand reassurance"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis": "If introductory pricing terms (e.g., '1. Monat für 1 € – monatlich kündbar') are displayed directly above or inside the CTA button, trial subscription starts will increase because price uncertainty is removed.",
+      "change": "Embed a clear price badge and post-trial renewal terms directly within the paywall container above the 'Jetzt SPIEGEL+ testen' button.",
+      "primary_metric": "paywall click-through rate (CTR); trial subscription start rate",
+      "impact": 8,
+      "confidence": 8,
+      "ease": 9,
+      "ice_score": "8.3"
+    },
+    {
+      "hypothesis": "If the article body allows 2–3 substantive paragraphs followed by a gradient fade-out rather than an abrupt cutoff, subscription intent will rise because readers become genuinely invested in the article's core argument.",
+      "change": "Implement a partial text preview with an editorial gradient blur overlay that transitions smoothly into the SPIEGEL+ offer card.",
+      "primary_metric": "paywall conversion rate per article impression",
+      "impact": 7,
+      "confidence": 7,
+      "ease": 7,
+      "ice_score": "7.0"
+    },
+    {
+      "hypothesis": "If third-party programmatic display ads directly surrounding the paywall card are suppressed for non-subscribers, subscription conversions will increase due to reduced exit paths and higher brand authority.",
+      "change": "Remove or replace third-party ad slots directly adjacent to paywalled content with SPIEGEL+ editorial highlights or author credentials.",
+      "primary_metric": "session conversion rate on paywall impressions",
+      "impact": 6,
+      "confidence": 6,
+      "ease": 7,
+      "ice_score": "6.3"
+    },
+    {
+      "hypothesis": "If the returning subscriber login path is converted into a high-contrast secondary CTA pill or persistent banner, bounce rates for paid subscribers arriving via external links will drop significantly.",
+      "change": "Redesign 'Bereits Abonnent? Anmelden' as a high-contrast secondary button or top-of-paywall banner.",
+      "primary_metric": "subscriber login completion rate from external referrers",
+      "impact": 5,
+      "confidence": 7,
+      "ease": 8,
+      "ice_score": "6.7"
+    }
+  ],
+  "quick_wins": [
+    "State the exact trial pricing and renewal cost directly on or immediately below the 'Jetzt SPIEGEL+ testen' button",
+    "Remove or suppress programmatic banner ads placed immediately under the paywall card",
+    "Increase typography size and contrast on the 'Sie haben bereits ein Konto? Hier anmelden' link",
+    "Add a social proof micro-copy line (e.g., 'Schließen Sie sich über 500.000 Digital-Abonnenten an')",
+    "Replace the hard-line cutoff with a smooth CSS gradient overlay over the preceding paragraph"
+  ],
+  "uncertainties": [
+    "Traffic acquisition source (search, social media, homepage direct) which strongly dictates reader willingness to pay",
+    "Whether dynamic A/B paywall testing or personalized meter limits are active in the background",
+    "Desktop vs. mobile reader proportion for this specific editorial piece",
+    "Checkout drop-off rate between clicking 'Jetzt SPIEGEL+ testen' and completing payment method entry"
+  ]
+}

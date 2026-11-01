@@ -1,0 +1,109 @@
+{
+  "page_type": "ecommerce_pdp",
+  "primary_goal": "Get the shopper to add the Apple AirPods Pro (2. Generation) to cart ('In den Einkaufswagen') or purchase immediately ('Jetzt kaufen')",
+  "overall_score": 76,
+  "friction_points": [
+    {
+      "area": "trust / risk reduction",
+      "issue": "Counterfeit anxiety is the primary hesitation for purchasing AirPods online, yet the critical trust signal ('Verkauf und Versand durch Amazon') is displayed in small, low-contrast metadata text inside the buy box.",
+      "evidence": "In the buy box, the fulfillment details ('Versand: Amazon', 'Verkäufer: Amazon') appear in standard muted grey/black typography without any prominent authenticity badge or 'Original Apple Neuware' confirmation.",
+      "severity": "high",
+      "principle": "risk reduction / trust architecture"
+    },
+    {
+      "area": "decision paralysis",
+      "issue": "Shoppers may experience hesitation between the AirPods Pro 2 and newer or cheaper adjacent models (such as AirPods 4 with ANC), and the page does not provide an immediate above-the-fold differentiation summary.",
+      "evidence": "The model comparison matrix is buried at the very bottom of the page across a 15+ row spec table, leaving users to guess the core upgrade benefits (e.g. silicone seal, touch volume controls, superior ANC) while viewing the primary buy box.",
+      "severity": "medium",
+      "principle": "choice architecture / cognitive load"
+    },
+    {
+      "area": "information architecture",
+      "issue": "The product title is heavily keyword-stuffed for search algorithms, which reduces quick legibility and scanning of critical variant details (Generation 2, USB-C case).",
+      "evidence": "The title spans multiple lines: 'Apple AirPods Pro (2. Generation) kabellose In-Ear Kopfhörer, Bluetooth Kopfhörer, Aktive Geräuschunterdrückung, Transparenzmodus, Personalisiertes 3D Audio, Hi-Res Audio, MagSafe Ladecase (USB-C)'.",
+      "severity": "medium",
+      "principle": "cognitive load / readability"
+    },
+    {
+      "area": "CTA / cross-sell friction",
+      "issue": "Upselling warranty and insurance options (e.g. AppleCare+ or third-party protection plans) directly adjacent to the primary CTA introduces a secondary decision point right at the purchase moment.",
+      "evidence": "Protection plan checkboxes and dropdowns are embedded directly above the 'In den Einkaufswagen' and 'Jetzt kaufen' buttons in the buy box.",
+      "severity": "medium",
+      "principle": "decision friction / checkout flow"
+    },
+    {
+      "area": "layout / content discovery",
+      "issue": "High-converting visual A+ manufacturer content (explaining ANC performance, battery life, and ear-tip sizing) is pushed far below dense text blocks and sponsored recommendation carousels.",
+      "evidence": "A user must scroll past extensive 'Info zu diesem Artikel' bullet lists and technical specification tables before reaching Apple's visual feature breakdown.",
+      "severity": "low",
+      "principle": "visual hierarchy / engagement"
+    },
+    {
+      "area": "urgency / shipping certainty",
+      "issue": "The Prime delivery date notice lacks a real-time order cutoff countdown, missing an opportunity to trigger purchase urgency.",
+      "evidence": "Delivery status displays a standard static date ('Lieferung bis...') without an order deadline counter (e.g. 'Bestelle innerhalb von 2 Std. 15 Min.').",
+      "severity": "low",
+      "principle": "urgency / loss aversion"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis": "If a prominent '100% Original Apple Neuware – Verkauf & Versand durch Amazon' authenticity badge is added near the price and buy box, then add-to-cart rates will increase because counterfeit concerns will be alleviated immediately.",
+      "change": "Display a verified badge with shield icon and 'Autorisierter Händler / Originalware direkt von Amazon' right above the buy box buttons.",
+      "primary_metric": "add-to-cart conversion rate",
+      "impact": 7,
+      "confidence": 7,
+      "ease": 8,
+      "ice_score": "7.3"
+    },
+    {
+      "hypothesis": "If a dynamic order cutoff countdown is added to the Prime shipping messaging, then same-session purchases will increase due to heightened urgency and delivery predictability.",
+      "change": "Add 'Bestelle innerhalb von X Std. Y Min. für garantierte Lieferung morgen' adjacent to the Prime checkmark.",
+      "primary_metric": "same-session buy box conversion rate",
+      "impact": 6,
+      "confidence": 7,
+      "ease": 8,
+      "ice_score": "7.0"
+    },
+    {
+      "hypothesis": "If a sticky purchase bar (with product thumbnail, price, and 'In den Einkaufswagen' CTA) appears when scrolling through the A+ manufacturer content, then conversion will improve because engaged readers won't need to scroll back up to buy.",
+      "change": "Implement a persistent bottom/top sticky bar triggered once the main buy box scrolls out of view.",
+      "primary_metric": "add-to-cart rate from deep-scroll visits",
+      "impact": 6,
+      "confidence": 7,
+      "ease": 7,
+      "ice_score": "6.7"
+    },
+    {
+      "hypothesis": "If a concise 'Warum Pro 2?' highlight pill box (pointing out 2x ANC, Silikontips, and touch volume control) is positioned above the fold, then hesitation against cheaper AirPods models will decrease.",
+      "change": "Add a 3-point micro-comparison chip directly below the model selection section.",
+      "primary_metric": "product detail page bounce rate; cart add rate",
+      "impact": 6,
+      "confidence": 6,
+      "ease": 7,
+      "ice_score": "6.3"
+    },
+    {
+      "hypothesis": "If device protection (AppleCare+) is moved to a seamless post-click drawer or modal rather than inline within the buy box, then initial add-to-cart speed and completion will improve.",
+      "change": "Replace inline protection checkboxes with a clean post-add confirmation modal offering AppleCare+.",
+      "primary_metric": "cart add rate; AppleCare attach rate",
+      "impact": 5,
+      "confidence": 6,
+      "ease": 6,
+      "ice_score": "5.7"
+    }
+  ],
+  "quick_wins": [
+    "Highlight 'Verkauf und Versand durch Amazon' with an icon or bold styling to reinforce authentic retailer trust",
+    "Add a dynamic delivery countdown timer next to the Prime shipping line",
+    "Feature the inclusion of 4 silicone tip sizes (XS, S, M, L) as a bolded, prominent bullet to immediately resolve in-ear fit concerns",
+    "Enable a sticky 'In den Einkaufswagen' bar when scrolling past the first viewport into the A+ content",
+    "Add quick-jump anchor links ('Highlights', 'Vergleichstabelle', 'Kundenbewertungen') under the review summary star rating"
+  ],
+  "uncertainties": [
+    "Whether the shopper is viewing on a mobile device where Amazon already renders a persistent bottom sticky CTA",
+    "Whether the visiting user is logged in and has an active Amazon Prime membership",
+    "Price competitiveness compared to external electronics retailers (e.g. MediaMarkt, Saturn, Cyberport) at the exact moment of browsing",
+    "Specific user intent: upgrading from 1st-gen AirPods Pro vs purchasing first premium ANC in-ear headphones"
+  ]
+}

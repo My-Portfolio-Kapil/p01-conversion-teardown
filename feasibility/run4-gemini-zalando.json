@@ -1,0 +1,74 @@
+{
+  "page_type": "homepage",
+  "primary_goal": "Guide mobile visitors into brand shops, product categories, or specific product detail pages to initiate browsing and purchasing journeys.",
+  "overall_score": 62,
+  "friction_points": [
+    {
+      "area": "trust",
+      "issue": "Absence of core German-market trust indicators, shipping guarantees, and risk-reversal signals in the viewport.",
+      "evidence": "Neither the header nor the visible feed sections display service guarantees such as 100-day free returns (100 Tage Rückgaberecht), free delivery, or accepted payment methods like Kauf auf Rechnung or PayPal.",
+      "severity": "high",
+      "principle": "trust"
+    },
+    {
+      "area": "navigation",
+      "issue": "Repetitive brand-first feed layout forces excessive scrolling without structured category entry points.",
+      "evidence": "The feed stacks repetitive brand blocks (Khujo, Vans, HUGO, Columbia) each showing only a hero image, a text snippet, a generic pill button ('Discover the brand', 'Shop now'), and 2 narrow product cards, with no horizontal quick-filters for categories (e.g., Men, Women, Shoes, Jackets, Sale).",
+      "severity": "high",
+      "principle": "cognitive load"
+    },
+    {
+      "area": "layout",
+      "issue": "Intrusive interstitial promotional banner disrupts shopping flow without a clear action or value proposition.",
+      "evidence": "A full-width grey-and-pink container titled 'Match, swipe, play: ...' with four abstract line icons (play, coil, phone with heart, smile) has an 'X' close icon but no distinct primary CTA button explaining the tangible user benefit.",
+      "severity": "medium",
+      "principle": "clarity"
+    },
+    {
+      "area": "CTA",
+      "issue": "Weak visual hierarchy and low touch-target contrast for product actions within cards.",
+      "evidence": "Product tiles underneath Khujo, Vans, and Columbia have tiny text for prices, low-contrast secondary buttons ('Add to bag' / variation pills), and small wishlist heart icons overlaying image backgrounds.",
+      "severity": "medium",
+      "principle": "clarity"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis": "If we introduce a compact USP banner directly below the search bar highlighting free delivery, 100-day returns, and purchase on invoice (Rechnung), then click-through rate to product pages will increase because German consumers' transactional risk hesitation is immediately reduced.",
+      "change": "Add a sticky or top-of-feed rotating/static micro-USP bar (e.g., 'Kostenloser Versand & Rückversand | Kauf auf Rechnung').",
+      "primary_metric": "product page click-through rate",
+      "impact": 8,
+      "confidence": 8,
+      "ease": 9,
+      "ice_score": "8.3"
+    },
+    {
+      "hypothesis": "If we add horizontal category quick-links (e.g., 'Jackets', 'Sneakers', 'Sale', 'New In') above the brand feed, then browse depth and add-to-cart rate will improve because shoppers can reach their specific intent without scrolling past multiple full-screen brand campaigns.",
+      "change": "Place horizontally scrollable category chips directly below the top search header.",
+      "primary_metric": "category page visit rate",
+      "impact": 8,
+      "confidence": 8,
+      "ease": 8,
+      "ice_score": "8.0"
+    },
+    {
+      "hypothesis": "If we replace the vague 'Match, swipe, play' promo banner with a clear incentivized CTA card (e.g., 'Exclusive app discounts'), then engagement will increase and banner dismissals will decrease because the visitor receives an explicit, valuable reason to interact.",
+      "change": "Add explicit benefit copy and a prominent primary CTA button instead of a passive graphic with an 'X' close button.",
+      "primary_metric": "promotional banner click rate",
+      "impact": 6,
+      "confidence": 7,
+      "ease": 8,
+      "ice_score": "7.0"
+    }
+  ],
+  "quick_wins": [
+    "Increase contrast and tap area for the wishlist heart icons on all product tiles.",
+    "Add a high-contrast primary CTA button (e.g., 'Play now' or 'Try it') inside the 'Match, swipe, play' banner.",
+    "Increase font size and background contrast for discount percentage callouts (such as the red '-35%' badge on the Vans product card)."
+  ],
+  "uncertainties": [
+    "Whether this view is within the native Zalando mobile application or a mobile browser session.",
+    "Whether the displayed brands and items are personalized based on prior user behavior or globally served to all new visitors.",
+    "Whether the English-language copy is an intentional user setting or default fallback for a non-German locale setting."
+  ]
+}

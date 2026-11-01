@@ -1,0 +1,126 @@
+{
+  "page_type": "article_paywall",
+  "primary_goal": "Get the visitor to start a SPIEGEL+ digital subscription trial ('4 Wochen für 1 €') to unlock the article",
+  "overall_score": 58,
+  "friction_points": [
+    {
+      "area": "value proposition",
+      "issue": "The paywall appears right after the headline, teaser and hero image. No article text is shown, so the visitor is asked to pay before seeing any value from the piece.",
+      "evidence": "Below the teaser 'Der Linken-Parteitag machte den Weg frei…' and the photo caption, the next element is the 'Jetzt Artikel freischalten:' box. No body paragraph is visible.",
+      "severity": "high",
+      "principle": "value before ask / reciprocity"
+    },
+    {
+      "area": "pricing",
+      "issue": "The two offers use different price units, so they are hard to compare. The cost after the trial is only implied by a struck reference price.",
+      "evidence": "Option 1: '4 Wochen für 1 €, statt 20,95 €'. Option 2: '12 Wochen für 2,99 € pro Woche, statt 4,99 €'. One is priced per period and the other per week. Neither shows the price after the offer ends next to the CTA.",
+      "severity": "high",
+      "principle": "price clarity / comparability / trust"
+    },
+    {
+      "area": "trust",
+      "issue": "Low-quality, clickbait ads placed directly under the paywall undermine the premium positioning the visitor is being asked to pay for. The same ad also appears twice in a row.",
+      "evidence": "Two identical 'Unglaublicher Ansturm auf Mini-Hörgeräte: Dieses unsichtbare Hörgerät verkauft sonst keiner' ads are stacked immediately below the paywall and the 'Startseite' link.",
+      "severity": "medium",
+      "principle": "brand trust / premium perception"
+    },
+    {
+      "area": "layout",
+      "issue": "Large empty black areas, probably unfilled ad slots, create long dead scroll zones. The page looks broken and pushes 'Mehr lesen über' and the related content far down.",
+      "evidence": "There are several tall empty blocks: between the small 4-up ad row and the Renault/Hurtigruten/Abarth sponsored block, after the Abarth ad, and before 'SPIEGEL Games'.",
+      "severity": "medium",
+      "principle": "visual hierarchy / perceived quality"
+    },
+    {
+      "area": "layout",
+      "issue": "A display ad sits above the headline, so the editorial content and the paywall start lower in the first viewport.",
+      "evidence": "An 'ANZEIGE' donation banner ('Spende für das Projekt…', 'Spendenziel') appears between the breadcrumb and the 'Rot-Grün-Rot' kicker.",
+      "severity": "medium",
+      "principle": "focus / above-the-fold priority"
+    },
+    {
+      "area": "layout",
+      "issue": "The sticky DER SPIEGEL header is rendered in the middle of the page and overlaps the hero image.",
+      "evidence": "The orange 'DER SPIEGEL' bar with 'Anmelden' cuts across the top of the photo of Krach, Eralp and Graf, below the 'SPIEGEL bei Google bevorzugen' link.",
+      "severity": "low",
+      "principle": "visual integrity"
+    },
+    {
+      "area": "CTA",
+      "issue": "The secondary links for existing subscribers are small and low-contrast. Print subscribers, a high-intent segment, may miss the discounted upgrade path.",
+      "evidence": "'Sie haben bereits ein Digital-Abo? Hier anmelden' and 'Sie haben bereits ein Print-Abo? Hier vergünstigt Digital-Zugang bestellen' appear in small grey text at the bottom of the paywall box.",
+      "severity": "low",
+      "principle": "clarity / segment routing"
+    },
+    {
+      "area": "trust",
+      "issue": "No payment-method cues are shown near the CTA. German users often look for PayPal or direct debit before starting a subscription.",
+      "evidence": "The paywall box shows only the price options, three benefit bullets and 'Jetzt für 1 € testen'. There are no PayPal, SEPA or invoice badges.",
+      "severity": "low",
+      "principle": "trust / German market expectations"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis": "If the post-trial price and cancellation terms are stated directly under the CTA, then trial starts will improve because visitors won't hesitate over hidden follow-on costs.",
+      "change": "Add a line under 'Jetzt für 1 € testen': 'Danach 20,95 € / 4 Wochen. Jederzeit online kündbar.'",
+      "primary_metric": "paywall conversion rate (trial starts / paywall views)",
+      "impact": 6,
+      "confidence": 6,
+      "ease": 9,
+      "ice_score": "7.0"
+    },
+    {
+      "hypothesis": "If the first 1–2 paragraphs are shown before the paywall, then trial starts will improve because readers will be invested in the story when they are asked to pay.",
+      "change": "Show the first 1–2 body paragraphs with a fade-out above the paywall box",
+      "primary_metric": "paywall conversion rate",
+      "impact": 7,
+      "confidence": 6,
+      "ease": 7,
+      "ice_score": "6.7"
+    },
+    {
+      "hypothesis": "If both offers use the same price unit and show the saving, then selection and conversion will improve because the choice becomes a simple comparison.",
+      "change": "Express both offers per week (e.g. '0,25 €/Woche für 4 Wochen' vs '2,99 €/Woche, 40% günstiger') or both per period, and add a savings badge",
+      "primary_metric": "paywall conversion rate; revenue per paywall view",
+      "impact": 5,
+      "confidence": 5,
+      "ease": 8,
+      "ice_score": "6.0"
+    },
+    {
+      "hypothesis": "If PayPal and SEPA badges are shown under the CTA, then trial starts will improve because payment friction and trust concerns drop.",
+      "change": "Add small PayPal / Lastschrift / Kreditkarte icons below the primary CTA",
+      "primary_metric": "paywall conversion rate",
+      "impact": 4,
+      "confidence": 5,
+      "ease": 8,
+      "ice_score": "5.7"
+    },
+    {
+      "hypothesis": "If the duplicate clickbait ads directly below the paywall are removed or moved further down, then paywall conversion will improve because premium perception stays intact around the purchase moment.",
+      "change": "Deduplicate the 'Mini-Hörgeräte' ad and enforce an ad-free buffer of about one viewport below the paywall",
+      "primary_metric": "paywall conversion rate",
+      "impact": 5,
+      "confidence": 5,
+      "ease": 6,
+      "ice_score": "5.3"
+    }
+  ],
+  "quick_wins": [
+    "Collapse unfilled ad slots so empty black areas take no height",
+    "Deduplicate the back-to-back 'Mini-Hörgeräte' ads",
+    "Increase contrast and size of the 'Hier anmelden' and Print-Abo upgrade links",
+    "Add a one-line post-trial price and cancellation note under the CTA",
+    "Mark the 12-week option with a savings badge so the second offer has a clear reason to exist"
+  ],
+  "uncertainties": [
+    "Whether the mid-page sticky header and the empty black areas are real rendering issues or artifacts of the full-page screenshot",
+    "Whether the post-trial price is disclosed after clicking the CTA (in the checkout step)",
+    "Which payment methods are offered at checkout",
+    "Whether a body text preview is shown to some users (e.g. metered or referral traffic) and hidden only in this session",
+    "Desktop layout, since only a mobile view is visible",
+    "Ad revenue trade-off: removing or moving ads near the paywall may cost display revenue, which the test should measure",
+    "Small text (caption, bullet details, footer) is not fully legible at this resolution"
+  ]
+}

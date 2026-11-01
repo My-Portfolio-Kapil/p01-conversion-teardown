@@ -1,0 +1,120 @@
+{
+  "page_type": "homepage",
+  "primary_goal": "Get the visitor from the homepage into a relevant category, brand or product page quickly, and ultimately to add an item to the bag",
+  "overall_score": 54,
+  "friction_points": [
+    {
+      "area": "navigation",
+      "issue": "There are no visible category entry points such as Women, Men, Kids, Sale or New in. A visitor who doesn't want to use search has no obvious way to start browsing, and the first screen is filled by a single-brand ad.",
+      "evidence": "Header shows only the hamburger icon, search field, globe, account, wishlist and bag icons. Directly below it is a 'Sponsored' khujo hero ('Own the city.') with no category tabs or shortcuts anywhere above the fold.",
+      "severity": "high",
+      "principle": "clarity / information scent"
+    },
+    {
+      "area": "layout",
+      "issue": "The homepage is a repeating chain of near-identical sponsored brand blocks. Every block uses the same structure: image, headline, outlined CTA, two products and a Follow button. There is no personalised or broad-assortment module, which lowers relevance and invites scrolling without clicking.",
+      "evidence": "'Sponsored' labels appear above khujo, Vans, HUGO and Columbia, with a Calvin Klein ad at the bottom. Each block repeats the same pattern. The only non-sponsored modules are 'Stories that inspire' and 'Explore boards', and neither is a 'recommended for you' or 'recently viewed' module.",
+      "severity": "high",
+      "principle": "relevance / banner blindness"
+    },
+    {
+      "area": "trust",
+      "issue": "None of the key German-market reassurance messages are visible. There is no free delivery or returns promise, no return window, and no payment options such as PayPal, Klarna or invoice (Rechnung).",
+      "evidence": "No USP bar under the header and no shipping, returns or payment icons anywhere on the visible page. Product cards show only brand, name, price and badges.",
+      "severity": "high",
+      "principle": "trust / risk reversal"
+    },
+    {
+      "area": "CTA",
+      "issue": "The primary CTAs are visually weak and inconsistently labelled. This makes the next step less obvious, and the CTAs compete equally with the secondary 'Follow' buttons.",
+      "evidence": "The CTAs are outlined pill buttons with different labels: 'Discover the brand' (khujo), 'Shop now' (Vans, Columbia) and 'Explore now' (HUGO). The '+ Follow' buttons under the products use the same outlined style.",
+      "severity": "medium",
+      "principle": "visual hierarchy / consistency"
+    },
+    {
+      "area": "layout",
+      "issue": "A full-width app promotion interrupts the shopping flow mid-page. It has no visible download action and shows a star rating without any number or count, so it uses space without clear value.",
+      "evidence": "The 'Tried our app yet?' block shows ★★★★★ with no rating value or review count, four large red outline icons, and only a small close 'X'. No App Store or Play Store button is visible.",
+      "severity": "medium",
+      "principle": "cognitive load / credibility"
+    },
+    {
+      "area": "pricing",
+      "issue": "The discount communication is vague and hard to read, which weakens its effect as a deal signal.",
+      "evidence": "'From €63.95' sits above small grey text reading 'Regular price: €79.95 up to -20%' on the Vans Old Skool. The HUGO Nestor card shows 'From €127.95' with 'Regular price: €169.95 up to -25%'.",
+      "severity": "medium",
+      "principle": "clarity / price transparency"
+    },
+    {
+      "area": "layout",
+      "issue": "Carousel arrow buttons sit on top of product images and cards are cropped at the right edge. This partly hides products and makes it unclear how much more content there is.",
+      "evidence": "Circular arrow buttons overlap the right product image in the khujo, Vans, HUGO and Columbia rows and in 'Stories that inspire'. A third card is cut off at the right edge in 'Explore boards' and 'Stories'.",
+      "severity": "low",
+      "principle": "affordance / visual clarity"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis": "If we add a row of category shortcuts (Women, Men, Kids, Sale, New in) directly under the search bar and above the sponsored hero, then the click-through rate from the homepage to category pages will improve, because visitors who don't know exactly what they want get an immediate, low-effort path into browsing.",
+      "change": "Insert a horizontally scrollable chip or tab row with the main categories between the header and the first sponsored block.",
+      "primary_metric": "homepage-to-category click-through rate",
+      "impact": 8,
+      "confidence": 7,
+      "ease": 7,
+      "ice_score": "7.3"
+    },
+    {
+      "hypothesis": "If we add a slim USP bar under the header (e.g. 'Free delivery & returns', '100-day returns', 'Pay with PayPal, Klarna or invoice'), then homepage-to-product click-through and session conversion rate will improve, because German shoppers' main purchase-risk concerns are answered upfront.",
+      "change": "Add a single-line rotating or static USP strip under the search bar with shipping, returns and payment reassurance, including small payment-method logos.",
+      "primary_metric": "session conversion rate",
+      "impact": 7,
+      "confidence": 6,
+      "ease": 8,
+      "ice_score": "7.0"
+    },
+    {
+      "hypothesis": "If we replace the mixed outlined CTAs ('Discover the brand', 'Explore now', 'Shop now') with one consistent, filled primary button labelled 'Shop now', then the CTA click rate on brand blocks will improve, because the main action stands out clearly from the secondary 'Follow' buttons.",
+      "change": "Standardise every brand-block CTA to a filled, high-contrast 'Shop now' button and keep 'Follow' as a text link or ghost button.",
+      "primary_metric": "brand-block CTA click rate",
+      "impact": 5,
+      "confidence": 6,
+      "ease": 9,
+      "ice_score": "6.7"
+    },
+    {
+      "hypothesis": "If we add a personalised 'Recommended for you' or 'Recently viewed' product carousel directly after the first sponsored block, then the product-detail-page click rate from the homepage will improve, because relevant products break the run of repetitive brand ads.",
+      "change": "Insert a personalised product carousel (falling back to bestsellers for new visitors) in position two of the homepage.",
+      "primary_metric": "homepage-to-PDP click rate",
+      "impact": 8,
+      "confidence": 6,
+      "ease": 5,
+      "ice_score": "6.3"
+    },
+    {
+      "hypothesis": "If we shrink the 'Tried our app yet?' block into a slim, dismissible banner with a real store button and a rating value, then scroll depth and product click-through below that point will improve, because the shopping flow is no longer interrupted by a large, low-action block.",
+      "change": "Replace the full-width app section with a compact banner showing the rating value or count and an 'Open in app' or 'Get the app' button, or move it to the end of the page.",
+      "primary_metric": "click-through rate on modules below the app block",
+      "impact": 4,
+      "confidence": 5,
+      "ease": 8,
+      "ice_score": "5.7"
+    }
+  ],
+  "quick_wins": [
+    "Add a numeric rating and review count next to the five stars in the app promo (e.g. '4.7 · 1.2M ratings'), or remove the stars.",
+    "Show the exact discount on each card instead of 'up to -20%' / 'up to -25%', and increase the contrast of the grey 'Regular price' text.",
+    "Unify the CTA labels across brand blocks so the same action always has the same wording.",
+    "Move the carousel arrow buttons off the product images or make them smaller and semi-transparent, so products aren't hidden.",
+    "Make product-name formatting consistent (e.g. 'KIRK - Winter coat' and 'STORMWALL BALACLAVA - Winter jacket' mix all-caps names with sentence-case types).",
+    "Add a visible store download button inside the app promo so it has a clear action."
+  ],
+  "uncertainties": [
+    "Whether the footer with Impressum, Datenschutz, AGB, payment logos and trust seals exists below the cut-off point (the screenshot ends at the Calvin Klein block).",
+    "Whether category navigation is available behind the hamburger menu or through a sticky bottom navigation not captured in a static screenshot.",
+    "Whether the all-menswear selection reflects personalisation for a logged-in or returning male user, or is the default for all visitors.",
+    "Whether the English-language interface is a user setting or the default on the German store, so language consistency for German users can't be judged.",
+    "Whether the 'Regular price' reference complies with the German price rules (PAngV, lowest price in the previous 30 days).",
+    "Page load speed, image weight and actual carousel behaviour on real devices.",
+    "Revenue impact of the sponsored placements: retail-media income may justify their prominence even if it costs some conversion."
+  ]
+}
