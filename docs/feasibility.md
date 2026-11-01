@@ -1,53 +1,58 @@
-# Feasibility: Prompt v1 on Claude vs Gemini (P1-02)
+## Question
+Can a vision model produce a useful, evidence-based CRO teardown from a single screenshot, fast and for free?
 
-Date: 2026-11-01. Prompt: `prompts/v1-teardown.md`. Runs are in `feasibility/`. All runs were done in the chat UI, and model versions were not recorded.
-
-Test pages (full-page screenshots, each 16,384 px tall):
-- test1 = Zalando men's homepage (mobile)
-- test2 = Amazon.de AirPods Pro 3 product page (desktop, EN interface)
-- test3 = Spiegel+ article paywall (mobile)
-
-Hallucination means evidence that is not on the screenshot (as defined in `04-evals.md`). Every claim below was checked against the screenshots.
-
-## 1. Results per run
-
-| Run | Model | Page | Valid JSON | page_type correct | Friction pts | Best insight | Not in screenshot (hallucination) | Rating |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Claude | Zalando | Yes | Yes (`homepage`) | 7 | No category entry points. The feed is a chain of sponsored brand blocks. | No invented issues. Misread numbers: Vans "up to -20%" (page shows -25%), HUGO "€169.95 up to -25%" (page shows €159.95, -20%), "Nestor" (page shows NESTON). | 4 |
-| 2 | Claude | Amazon | Yes | Yes (`product_page`) | 7 | The buy box defaults to a "Used – Very Good" €191 offer from Amazon Retourenkauf, while the main price is €206 new. | None found. The #1 issue (white area over the buy box) is probably a screenshot artefact. Claude flags this under uncertainties but still ranks it high. | 4 |
-| 3 | Claude | Spiegel | Yes | Partly (`article_paywall`, not in enum) | 8 (rule: max 7) | The two offers use different price units (4 Wochen für 1 € vs 2,99 €/Woche), and there is no post-trial price at the CTA. | Struck prices misread: "statt 20,95 €" and "4,99 €" (page shows 25,96 € and 6,49 €). The wrong 20,95 € is carried into a hypothesis. The mid-page sticky header is probably a screenshot artefact. | 4 |
-| 4 | Gemini | Zalando | Yes, after cleaning (copy artefact) | Yes (`homepage`) | 4 | Missing USP bar (free delivery/returns, Kauf auf Rechnung). Generic but valid. | 2 of 4 points. The app banner is titled "Match, swipe, play" (page says "Tried our app yet?"). Cards have "Add to bag" buttons and variant pills (none exist). The quick win cites a "-35%" Vans badge (none exists). | 2 |
-| 5 | Gemini | Amazon | Yes | Partly (`ecommerce_pdp`, not in enum) | 6 | None usable. | About 5 of 6 points. Wrong product (AirPods Pro **2**). Invented German UI ("In den Einkaufswagen", "Info zu diesem Artikel", "Verkäufer: Amazon"; page is EN and sold by Amazon Retourenkauf). Invented AppleCare checkboxes. Invented title text. | 1 |
-| 6 | Gemini | Spiegel | Yes | Partly (`editorial_paywall`, not in enum) | 5 | Paywall comes before any body text (Claude found the same). | 3 of 5 points. Claims no price is shown (page shows 1 € and 2,99 €/Woche). Wrong CTA text ("Jetzt SPIEGEL+ testen"; page says "Jetzt für 1 € testen"). "Labormöbel" ads (page shows "Mini-Hörgeräte"). Invented benefit bullets. | 1 |
-
-## 2. Claude vs Gemini
-
-| | Claude | Gemini |
+## Test set
+| ID | Page | Notes on the capture |
 |---|---|---|
-| Quality | Page-specific findings with exact evidence. Each run has 1–2 insights a CRO consultant would raise. | Mostly generic CRO advice (trust badges, countdowns, social proof). Only run 4 is tied to the actual page. |
-| Consistency | Grounded on 3/3 pages. Rule-following is loose: 8 friction points in run 3, one enum violation. | Grounded on 1/3 pages. Runs 5 and 6 read like a description of a typical Amazon page or Spiegel paywall, not the screenshot. Run 6 hypotheses are out of ICE order. |
-| Hallucinations | 0/22 invented issues. 2 runs contain misread numbers from small text. | About 10/15 friction points have evidence not on the page (about 67%; pass bar ≤ 10%). |
+| E01 | Zalando homepage | Served in English; narrow (tablet-width) layout |
+| E11 | Amazon.de product page (Dreame robot vacuum) | English, GBP prices, delivery set to UK; a white overlay covers part of the buy box |
+| E16 | SPIEGEL+ paywall on an article | German; paywall module fully visible |
 
-The most likely cause is the input, not only the model. At 16,384 px tall, a full-page screenshot is heavily downscaled before the model sees it, so small text becomes unreadable. Claude still misreads small numbers, and Gemini fills in from what it expects such a page to contain. This hasn't been tested yet.
+## Results
 
-## 3. Weak spots of prompt v1
+### Gemini `gemini-3.6-flash` (API, free tier)
+| ID | Time | Valid JSON | Friction points | Grounded in the screenshot? | Notes |
+|---|---|---|---|---|---|
+| E01 | 17.4 s | ✅ | 5 | 4 of 5 | Calls the black Women/Men/Kids pills "low-contrast": they are high-contrast. Other points (SEO text lists, unlabelled floating button, no trust bar in view) are visible. |
+| E11 | 15.7 s | ✅ | 4 | 4 of 4 | Reads the screenshot accurately, but treats capture artefacts (overlay, UK/GBP settings) as page problems. Flags this itself under `uncertainties`. Real finds: English/German mix, "See 1 options" typo. |
+| E16 | 13.6 s | ✅ | 4 | 4 of 4 | Strongest result: no payment badges, post-trial price not shown, commitment-heavy CTA, asymmetric plan presentation. All checkable in the image. |
 
-1. **No input spec.** Any screenshot size is accepted. Very tall full-page captures lose legible text. Fix: send the page as viewport-sized sections, and pass `device` and `url` as inputs.
-2. **No rule for illegible text.** "Analyse only what is visible" doesn't stop the model from guessing. Fix: "If you cannot read text exactly, do not quote or paraphrase it; add it to `uncertainties`."
-3. **Evidence isn't verbatim.** Fix: add an `evidence_quote` field that must contain exact on-screen text. This makes hallucinations quick to spot when labelling evals.
-4. **Schema isn't enforced.** 3/6 runs invented `page_type` values, and one run broke the 3–7 limit. Fix: use structured output with an enum and min/max counts (Gemini API `responseSchema`). This also removes the copy artefact from run 4.
-5. **Screenshot artefacts are treated as page issues** (Amazon white area, Spiegel mid-page header). Fix: "Rendering glitches likely caused by the capture go in `uncertainties`, not `friction_points`."
-6. **The German-market checklist invites absence findings.** Examples: "no PayPal/Klarna" on a product page or paywall where payment is never shown. Fix: flag a missing element only if this page type normally shows it.
-7. **ICE is left to the model.** Gemini gives confidence 7–8 to everything, and ordering is not always followed. Fix: compute `ice_score` and sort in code. Ask the model only for I, C and E.
+Raw outputs: `evals/results/E*.gemini-3.6-flash.json`.
 
-## 4. Decision
+### ChatGPT and Claude (chat apps)
+⚠️ **Not a like-for-like test.** The chat apps received the original full-page captures (up to 2000 × 16384 px), not the cropped files Gemini got. Both apps had to shrink these heavily, and both said the image was low-resolution.
 
-**Change prompt → re-test → then go/no-go.** Gemini with prompt v1 is a **no-go**: about 67% hallucination against a bar of ≤ 10%.
+| ID | ChatGPT | Claude |
+|---|---|---|
+| E01 Zalando | Score 72, 6 issues. All grounded. Strong on the footer-only trust signals (delivery threshold, returns, payment logos). | Score 58, 7 issues. All grounded and the most specific: no products or prices on the homepage, USPs only in the footer, floating icon overlapping "Kids", "Subcribe" typo. |
+| E11 Amazon | Score 68, 6 issues. Mostly vague ("not legible at this resolution"). Couldn't read prices or buttons. | Score 62, 6 issues. Good structural points (English/German mix, overlong title, sponsored row before A+ content). **Misread the deal badge and price as "-50%, ~€292"** (actual: -30%, GBP 292.05). |
+| E16 Spiegel+ | Score 54. **Missed the paywall entirely** (page type "other") and misquoted the headline ("Wer da war?"). Not usable. | Score 60, 5 issues. Found the paywall issues plus a new one: paywall shown before any body text. Flagged empty ad areas and spinners, but as possible capture artefacts. |
 
-**Model for the app: Gemini (free API)**, conditional on a re-test. Claude shows the task is feasible, but it costs money and is used only as the comparison benchmark.
+Raw outputs: `evals/results/E*.chatgpt.json`, `evals/results/E*.claude.json`.
 
-Next steps:
-1. Write prompt v2 with fixes 1–7.
-2. Re-run the 3 pages through the **Gemini API**, not the chat UI, with structured output and sectioned screenshots. Record the model version.
-3. Go if there are 0 invented issues across the 3 pages. Then run the 20-page eval set against the bars in `04-evals.md`.
-4. If Gemini still hallucinates, cut the scope to first-viewport-only analysis before considering a paid model.
+### Comparison
+| | Gemini 3.6-flash (crops) | ChatGPT (full pages) | Claude (full pages) |
+|---|---|---|---|
+| Correct page type | 3/3 | 2/3 | 3/3 |
+| Grounded issues | 12/13 | Grounded but vague on E11/E16 | 17/18 (1 misread) |
+| Specificity | Good | Low on long pages | Highest |
+| Free via API | ✅ | ❌ | ❌ |
+
+## Observations
+- **Speed:** 14–17 s per page, inside the < 30 s bar.
+- **Format:** strict JSON every time (with `responseMimeType: application/json`).
+- **Grounding:** 12 of 13 friction points point to something visible; 1 is a wrong judgement (contrast). No issues about elements that aren't on screen.
+- **German market:** the model applies the German checklist (PayPal/Klarna/SEPA, shipping and returns, language consistency) as the prompt asks.
+- **Risk found:** it can't tell a page problem from a capture problem (overlays, region settings). → Add a guideline to the upload screen and a prompt rule; relevant to P1-09 (bad input).
+- **Risk found:** it judges what's in the crop only. A trust bar below the fold counts as "missing". → Tell users what to capture, or allow full-page screenshots.
+- **Biggest finding: input size decides quality.** On very tall full-page screenshots every model loses legibility; ChatGPT failed outright on the paywall. Cropped sections gave readable, specific results. → The app must handle long screenshots: split them into viewport-height tiles (or cap the height) before sending. Add to P1-07 / P1-09.
+- **Model choice:** Claude gave the most specific teardowns, but only Gemini is free via API, which the €0 constraint requires. Gemini's quality on crops is good enough to go ahead; recheck in P1-04 on the full eval set (ADR-001).
+
+## Recommendation
+**Go**, with `gemini-3.6-flash` via API and one change of approach: split tall screenshots into tiles before analysis. Decision below is the PM's.
+
+## Decision
+**Go, with tiling.** Decided by Prashant (PM), Nov 1, 2026.
+- Model for the build: `gemini-3.6-flash` via the free API. Confirm or change in ADR-001 after P1-04.
+- Change of approach: tall screenshots are split into viewport-height tiles before analysis (P1-07, P1-09).
+- The ChatGPT/Claude comparison used full-page images; re-run on crops in P1-04 if ADR-001 needs a fairer comparison.
